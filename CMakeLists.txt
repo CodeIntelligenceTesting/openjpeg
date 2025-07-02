@@ -19,6 +19,11 @@ set(OPENJPEG_LIBRARY_NAME openjp2)
 
 project(${OPENJPEG_NAMESPACE} C)
 
+enable_language(CXX)
+find_package(cifuzz NO_SYSTEM_ENVIRONMENT_PATH)
+enable_fuzz_testing()
+
+
 # Do full dependency headers.
 include_regular_expression("^.*$")
 
@@ -345,3 +350,5 @@ endif()
 
 # build our version of astyle
 SET (WITH_ASTYLE FALSE CACHE BOOL "If you plan to contribute you should reindent with scripts/prepare-commit.sh (using 'our' astyle)")
+
+add_subdirectory(cifuzz-spark)
